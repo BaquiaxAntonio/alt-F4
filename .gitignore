@@ -23,15 +23,32 @@ dist-ssr
 *.sln
 *.sw?
 
-# Python
+# ─── Secretos y configuración local ──────────────────────
+.env
+.env.local
+.env.*.local
+
+# ─── Python ──────────────────────────────────────────────
 __pycache__/
 *.py[cod]
 *$py.class
-*.env
+*.pyc
+.Python
+venv/
 .venv/
 env/
-venv/
+ENV/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
 
-# Large raw datasets
+# ─── Datos grandes (no versionar archivos XLSX del INE) ──
 data/raw/*
 !data/raw/.gitkeep
+!data/.gitkeep
+!data/processed/.gitkeep
+!data/processed/*.json
+
+# ─── Docker volumes ───────────────────────────────────────
+postgres_data/
