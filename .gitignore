@@ -1,0 +1,57 @@
+# ==============================
+# Node.js / Frontend
+# ==============================
+node_modules/
+dist/
+dist-ssr/
+*.local
+.next/
+out/
+build/
+
+# ==============================
+# Python / Backend
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+.env/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+
+# ==============================
+# Datos Específicos del Hackathon
+# ==============================
+# No subir los 4.3 millones de registros
+/data/raw/
+/data/processed/
+*.xlsx
+*.csv
+# (Nota: El archivo diccionario_variables.json SI debe subirse, por eso no está aquí)
+
+# ==============================
+# Entorno y Secretos (¡CRÍTICO!)
+# ==============================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+# (Asegúrate de subir el .env.example que NO tiene los secretos)
+
+# ==============================
+# SO y Herramientas (IDEs)
+# ==============================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
