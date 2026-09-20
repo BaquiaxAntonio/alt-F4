@@ -1,0 +1,11 @@
+{
+  "anio": 2024,
+  "total_estudiantes": 4623000,
+  "aprobados": 3978836,
+  "no_aprobados": 417160,
+  "retirados": 227004,
+  "tasa_aprobacion": 86.07,
+  "tasa_desercion": 4.91,
+  "tasa_repitencia": 9.02,
+  "departamentos_registrados": 22
+}

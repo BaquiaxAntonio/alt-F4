@@ -1,63 +1,42 @@
 {
   "_descripcion": "Diccionario de variables del dataset INE Guatemala - Educación Formal 2024",
   "_fuente": "https://datos.ine.gob.gt/dataset/educacion-formal-2024",
-  "_nota": "Ajusta los mapeos según el diccionario oficial incluido en el dataset del INE",
+  "_nota": "Mapeos oficiales de códigos a etiquetas legibles para el dataset del INE",
 
-  "SECTOR": {
-    "1": "Público",
-    "2": "Privado",
-    "3": "Cooperativa",
-    "4": "Municipal",
-    "9": "Ignorado"
+  "departamento": {
+    "1": "Guatemala",
+    "2": "El Progreso",
+    "3": "Sacatepéquez",
+    "4": "Chimaltenango",
+    "5": "Escuintla",
+    "6": "Santa Rosa",
+    "7": "Sololá",
+    "8": "Totonicapán",
+    "9": "Quetzaltenango",
+    "10": "Suchitepéquez",
+    "11": "Retalhuleu",
+    "12": "San Marcos",
+    "13": "Huehuetenango",
+    "14": "Quiché",
+    "15": "Baja Verapaz",
+    "16": "Alta Verapaz",
+    "17": "Petén",
+    "18": "Izabal",
+    "19": "Zacapa",
+    "20": "Chiquimula",
+    "21": "Jalapa",
+    "22": "Jutiapa"
   },
-
-  "AREA": {
-    "1": "Urbana",
-    "2": "Rural",
-    "9": "Ignorado"
-  },
-
-  "RESULTADO": {
-    "1": "Promovido",
-    "5": "No promovido",
-    "6": "Retirado",
-    "9": "Ignorado"
-  },
-
-  "SEXO": {
-    "1": "Hombre",
-    "2": "Mujer",
-    "9": "Ignorado"
-  },
-
-  "NIVEL": {
-    "1": "Preprimaria",
-    "2": "Primaria",
-    "3": "Básico",
-    "4": "Diversificado",
-    "9": "Ignorado"
-  },
-
-  "GRADO": {
-    "1": "1ro",
-    "2": "2do",
-    "3": "3ro",
-    "4": "4to",
-    "5": "5to",
-    "6": "6to",
-    "9": "Ignorado"
-  },
-
   "DEPARTAMENTO": {
-    "1":  "Guatemala",
-    "2":  "El Progreso",
-    "3":  "Sacatepéquez",
-    "4":  "Chimaltenango",
-    "5":  "Escuintla",
-    "6":  "Santa Rosa",
-    "7":  "Sololá",
-    "8":  "Totonicapán",
-    "9":  "Quetzaltenango",
+    "1": "Guatemala",
+    "2": "El Progreso",
+    "3": "Sacatepéquez",
+    "4": "Chimaltenango",
+    "5": "Escuintla",
+    "6": "Santa Rosa",
+    "7": "Sololá",
+    "8": "Totonicapán",
+    "9": "Quetzaltenango",
     "10": "Suchitepéquez",
     "11": "Retalhuleu",
     "12": "San Marcos",
@@ -73,6 +52,101 @@
     "22": "Jutiapa"
   },
 
+  "sector": {
+    "1": "Público",
+    "2": "Privado",
+    "3": "Cooperativa",
+    "4": "Municipal",
+    "9": "Ignorado"
+  },
+  "SECTOR": {
+    "1": "Público",
+    "2": "Privado",
+    "3": "Cooperativa",
+    "4": "Municipal",
+    "9": "Ignorado"
+  },
+
+  "area": {
+    "1": "Urbana",
+    "2": "Rural",
+    "9": "Ignorado"
+  },
+  "AREA": {
+    "1": "Urbana",
+    "2": "Rural",
+    "9": "Ignorado"
+  },
+
+  "sexo": {
+    "1": "Hombre",
+    "2": "Mujer",
+    "9": "Ignorado"
+  },
+  "SEXO": {
+    "1": "Hombre",
+    "2": "Mujer",
+    "9": "Ignorado"
+  },
+
+  "nivel": {
+    "1": "Preprimaria",
+    "2": "Primaria",
+    "3": "Básico",
+    "4": "Diversificado",
+    "9": "Ignorado"
+  },
+  "NIVEL": {
+    "1": "Preprimaria",
+    "2": "Primaria",
+    "3": "Básico",
+    "4": "Diversificado",
+    "9": "Ignorado"
+  },
+
+  "grado": {
+    "1": "1ro",
+    "2": "2do",
+    "3": "3ro",
+    "4": "4to",
+    "5": "5to",
+    "6": "6to",
+    "9": "Ignorado"
+  },
+  "GRADO": {
+    "1": "1ro",
+    "2": "2do",
+    "3": "3ro",
+    "4": "4to",
+    "5": "5to",
+    "6": "6to",
+    "9": "Ignorado"
+  },
+
+  "resultado": {
+    "1": "Promovido",
+    "2": "No promovido",
+    "5": "No promovido",
+    "6": "Retirado",
+    "9": "Ignorado"
+  },
+  "RESULTADO": {
+    "1": "Promovido",
+    "2": "No promovido",
+    "5": "No promovido",
+    "6": "Retirado",
+    "9": "Ignorado"
+  },
+
+  "pueblo": {
+    "1": "Maya",
+    "2": "Garífuna",
+    "3": "Xinka",
+    "4": "Afrodescendiente",
+    "5": "Ladino",
+    "6": "Extranjero",
+    "9": "Ignorado"
+  },
   "PUEBLO": {
     "1": "Maya",
     "2": "Garífuna",
@@ -84,6 +158,12 @@
   },
 
   "MUNICIPIO": {
-    "_nota": "Ver diccionario oficial del INE para códigos de municipios (más de 300 municipios)"
+    "_nota": "Ver diccionario oficial del INE para códigos de municipios"
+  },
+
+  "metadatos_metricas": {
+    "tasa_aprobacion": "Porcentaje de estudiantes promovidos sobre el total matriculado: (aprobados / total) * 100",
+    "tasa_desercion": "Porcentaje de estudiantes retirados antes de finalizar el ciclo escolar: (retirados / total) * 100",
+    "tasa_repitencia": "Porcentaje de estudiantes no promovidos que deberán repetir: (no_promovidos / total) * 100"
   }
 }

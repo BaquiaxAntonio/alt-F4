@@ -1,28 +1,29 @@
 # Análisis de Datos Educativos de Guatemala
 ## Hackathon AI Builders GT 2026 — Equipo alt-F4
 
-Plataforma conversacional que transforma 4.3 millones de registros del INE en análisis interactivo con IA.
+Plataforma interactiva y conversacional con IA para la exploración, visualización y análisis de datos educativos de Guatemala (Ministerio de Educación / INE 2024), transformando más de 4.3 millones de registros en respuestas y visualizaciones accionables.
 
 ---
 
 ## ¿Qué hace esta solución?
 
-1. **Ingesta** → Lee 22 archivos XLSX del INE, decodifica variables, calcula métricas y carga en PostgreSQL
-2. **API REST** → FastAPI con 5 endpoints principales + agente IA (Claude con RAG)
-3. **Frontend** → React + Recharts con dashboard, filtros y chat
+1. **Ingesta y Datos (Data Engineer)** → Decodificación de variables del INE con diccionario oficial, generación de agregaciones demográficas/geográficas, validación matemática de consistencia y soporte para SQLite local o PostgreSQL en producción.
+2. **API REST (Backend)** → Servidor FastAPI con endpoints optimizados para KPIs nacionales, departamentales, comparativas y un endpoint inteligente con IA (`/api/buscar`) usando Claude + RAG.
+3. **Frontend Interactivo** → Dashboard responsivo en React + Recharts con filtros en tiempo real, mapas comparativos y widget conversacional.
 
 ---
 
 ## Requisitos
 
-- Docker y Docker Compose
-- (Opcional para desarrollo local) Python 3.12+, Node.js 22+
+- Python 3.12+
+- Node.js 20+
+- (Opcional) Docker y Docker Compose
 
 ---
 
 ## Instalación y Ejecución
 
-### Con Docker (recomendado)
+### Opción A: Con Docker (Recomendado)
 
 ```bash
 # 1. Clonar el repositorio
@@ -33,36 +34,36 @@ cd alt-F4
 cp .env.example .env
 # Editar .env y agregar tu ANTHROPIC_API_KEY
 
-# 3. Colocar los archivos XLSX del INE en /data/raw/
+# 3. Colocar los archivos XLSX del INE en /data/raw/ (opcional para reprocesar)
 #    Descarga desde: https://datos.ine.gob.gt/dataset/educacion-formal-2024
 
 # 4. Levantar servicios (DB + Backend + Frontend)
 docker-compose up -d
 
-# 5. Ejecutar ingesta (primera vez o cuando cambien los datos)
+# 5. Ejecutar ingesta completa (primera vez o cuando cambien los datos)
 docker-compose --profile ingesta up ingesta
 
 # 6. Verificar que funciona
 curl http://localhost:8000/api/health
 ```
 
-### Desarrollo local (sin Docker)
+### Opción B: Desarrollo Local Rápido (Sin Docker)
 
 ```bash
 # ─── Backend ─────────────────────────────────────────
-cd alt-F4
 python -m venv .venv
+# En Windows:
+.venv\Scripts\activate
+# En Linux/Mac:
 source .venv/bin/activate
+
 pip install -r backend/requirements.txt
 
-# Necesitas PostgreSQL corriendo localmente
-# Configura DATABASE_URL en .env
+# Generar o verificar la base de datos local (SQLite) y datos mock:
+python backend/ingesta/generar_bd_inicial.py
 
 # Arrancar backend
 uvicorn backend.main:app --reload
-
-# ─── Ingesta ─────────────────────────────────────────
-python -m backend.ingesta.script_procesar_datos
 
 # ─── Frontend ─────────────────────────────────────────
 npm install
@@ -76,13 +77,13 @@ npm run dev
 | Método | Endpoint | Descripción |
 |--------|----------|-------------|
 | GET | `/api/health` | Estado del backend |
-| GET | `/api/resumen` | KPIs nacionales |
-| GET | `/api/departamentos` | 22 departamentos con métricas |
-| GET | `/api/departamento/{nombre}` | Detalle de un departamento |
-| GET | `/api/comparativas?tipo=urbano_rural` | Comparativas temáticas |
+| GET | `/api/resumen` | KPIs nacionales de aprobación, deserción y repitencia |
+| GET | `/api/departamentos` | 22 departamentos con métricas detalladas |
+| GET | `/api/departamento/{nombre}` | Detalle de un departamento específico |
+| GET | `/api/comparativas?tipo=urbano_rural` | Comparativas urbano/rural, sector y género |
 | POST | `/api/buscar` | Agente IA (RAG con Claude) |
 
-Documentación interactiva: http://localhost:8000/docs
+Documentación interactiva Swagger: http://localhost:8000/docs
 
 ---
 
@@ -91,22 +92,30 @@ Documentación interactiva: http://localhost:8000/docs
 ```
 alt-f4/
 ├── backend/
-│   ├── main.py              # App FastAPI
+│   ├── main.py                     # App FastAPI
 │   ├── requirements.txt
 │   ├── Dockerfile
 │   ├── api/
-│   │   ├── endpoints.py     # Rutas REST
-│   │   └── agente_ia.py     # Agente Claude con RAG
+│   │   ├── endpoints.py            # Rutas REST
+│   │   └── agente_ia.py            # Agente Claude con RAG
 │   ├── db/
-│   │   ├── models.py        # Esquema SQLAlchemy
-│   │   └── conexion.py      # Conexión PostgreSQL
+│   │   ├── models.py               # Esquema SQLAlchemy
+│   │   └── conexion.py             # Conexión dual PostgreSQL / SQLite
 │   └── ingesta/
-│       └── script_procesar_datos.py  # ETL datos INE
+│       ├── generar_bd_inicial.py   # Setup rápido de BD y JSONs de mock
+│       ├── script_procesar_datos.py# ETL datos INE (PostgreSQL)
+│       ├── procesar_datos.py       # Pipeline ETL modular Pandas
+│       └── validar_datos.py        # Auditoría matemática de calidad
 ├── data/
-│   ├── raw/                 # Archivos XLSX (no en Git)
-│   ├── processed/           # CSVs intermedios (no en Git)
-│   └── diccionario_variables.json  # Mapeo de códigos
-├── src/                     # Frontend React
+│   ├── raw/                        # Archivos XLSX crudos (no versionados)
+│   ├── processed/                  # JSONs de consulta rápida para frontend/backend
+│   │   ├── resumen_nacional.json
+│   │   ├── resumen_departamentos.json
+│   │   └── comparativas.json
+│   └── diccionario_variables.json  # Mapeo oficial de códigos INE
+├── src/                            # Frontend React + Vite
+├── educacion.db                    # Base de datos SQLite local precomputada
+├── VALIDACION_INGESTA.md           # Certificación técnica de datos (10/10 checks)
 ├── docker-compose.yml
 ├── .env.example
 └── GUIA_DESARROLLO_HACKATHON.md
@@ -114,24 +123,13 @@ alt-f4/
 
 ---
 
-## Configuración de Variables de Entorno
+## Validación y Certificación de Calidad
 
-```env
-DATABASE_URL=postgresql://hackathon:hackathon123@localhost:5432/educacion_gt
-ANTHROPIC_API_KEY=sk-ant-...   # Obligatorio para el agente IA
-VITE_API_URL=http://localhost:8000
+Para verificar la consistencia matemática y estadísticas de los datos:
+```bash
+python backend/ingesta/validar_datos.py
 ```
-
----
-
-## Datos
-
-- **Fuente:** INE Guatemala — Educación Formal 2024
-- **URL:** https://datos.ine.gob.gt/dataset/educacion-formal-2024
-- **Formato:** 22 archivos XLSX (uno por departamento)
-- **Volumen:** ~4.3 millones de registros
-
-Los archivos XLSX **no están en el repositorio** por su tamaño. Descárgalos del enlace oficial y colócalos en `/data/raw/`.
+Consulta los resultados detallados en [VALIDACION_INGESTA.md](VALIDACION_INGESTA.md).
 
 ---
 

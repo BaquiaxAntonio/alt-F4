@@ -44,11 +44,11 @@ dist/
 build/
 
 # ─── Datos grandes (no versionar archivos XLSX del INE) ──
-data/raw/
-data/processed/
+data/raw/*
+!data/raw/.gitkeep
 !data/.gitkeep
 !data/processed/.gitkeep
-!data/raw/.gitkeep
+!data/processed/*.json
 
 # ─── Docker volumes ───────────────────────────────────────
 postgres_data/
