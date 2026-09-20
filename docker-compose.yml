@@ -1,0 +1,83 @@
+version: "3.9"
+
+services:
+  # ─── Base de datos PostgreSQL ───────────────────────────────────────────────
+  db:
+    image: postgres:16-alpine
+    container_name: educacion_gt_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: hackathon
+      POSTGRES_PASSWORD: hackathon123
+      POSTGRES_DB: educacion_gt
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hackathon -d educacion_gt"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── Backend FastAPI ─────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: educacion_gt_backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://hackathon:hackathon123@db:5432/educacion_gt
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data           # Monta los datos locales (XLSX + diccionario)
+      - ./backend:/app/backend     # Hot-reload en desarrollo
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      uvicorn backend.main:app
+        --host 0.0.0.0
+        --port 8000
+        --reload
+
+  # ─── Ingesta (run una vez) ───────────────────────────────────────────────────
+  ingesta:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: educacion_gt_ingesta
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://hackathon:hackathon123@db:5432/educacion_gt
+    volumes:
+      - ./data:/app/data
+      - ./backend:/app/backend
+    depends_on:
+      db:
+        condition: service_healthy
+    command: python -m backend.ingesta.script_procesar_datos
+    profiles:
+      - ingesta    # Solo se ejecuta con: docker-compose --profile ingesta up ingesta
+
+  # ─── Frontend React + Vite ───────────────────────────────────────────────────
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: educacion_gt_frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    environment:
+      VITE_API_URL: http://localhost:8000
+
+volumes:
+  postgres_data:
