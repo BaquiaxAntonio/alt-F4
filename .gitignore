@@ -10,6 +10,17 @@ out/
 build/
 
 # ==============================
+# Logs
+# ==============================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ==============================
 # Python / Backend
 # ==============================
 __pycache__/
@@ -18,38 +29,37 @@ __pycache__/
 venv/
 env/
 .venv/
-.env/
+.pytest_cache/
 pip-log.txt
 pip-delete-this-directory.txt
-.pytest_cache/
 
 # ==============================
-# Datos Específicos del Hackathon
+# Datos del Hackathon
 # ==============================
-# No subir los 4.3 millones de registros
 /data/raw/
 /data/processed/
 *.xlsx
 *.csv
-# (Nota: El archivo diccionario_variables.json SI debe subirse, por eso no está aquí)
 
 # ==============================
-# Entorno y Secretos (¡CRÍTICO!)
+# Entorno y secretos
 # ==============================
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-# (Asegúrate de subir el .env.example que NO tiene los secretos)
 
-# ==============================
-# SO y Herramientas (IDEs)
-# ==============================
+
 .DS_Store
 Thumbs.db
-.vscode/
+
+.vscode/*
+!.vscode/extensions.json
+
 .idea/
+
+# Visual Studio
 *.suo
 *.ntvs*
 *.njsproj
