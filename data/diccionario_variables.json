@@ -1,0 +1,65 @@
+{
+  "departamento": {
+    "1": "Guatemala",
+    "2": "El Progreso",
+    "3": "Sacatepéquez",
+    "4": "Chimaltenango",
+    "5": "Escuintla",
+    "6": "Santa Rosa",
+    "7": "Sololá",
+    "8": "Totonicapán",
+    "9": "Quetzaltenango",
+    "10": "Suchitepéquez",
+    "11": "Retalhuleu",
+    "12": "San Marcos",
+    "13": "Huehuetenango",
+    "14": "Quiché",
+    "15": "Baja Verapaz",
+    "16": "Alta Verapaz",
+    "17": "Petén",
+    "18": "Izabal",
+    "19": "Zacapa",
+    "20": "Chiquimula",
+    "21": "Jalapa",
+    "22": "Jutiapa"
+  },
+  "sector": {
+    "1": "Oficial (Público)",
+    "2": "Privado",
+    "3": "Por Cooperativa",
+    "4": "Municipal"
+  },
+  "area": {
+    "1": "Urbana",
+    "2": "Rural"
+  },
+  "sexo": {
+    "1": "Hombre",
+    "2": "Mujer"
+  },
+  "nivel": {
+    "1": "Inicial",
+    "2": "Preprimaria",
+    "3": "Primaria",
+    "4": "Básico",
+    "5": "Diversificado"
+  },
+  "pueblo": {
+    "1": "Ladino / Mestizo",
+    "2": "Maya",
+    "3": "Garífuna",
+    "4": "Xinka",
+    "9": "No especificado"
+  },
+  "resultado": {
+    "1": "Promovido (Aprobado)",
+    "2": "No Promovido (Reprobado)",
+    "3": "Retirado (Deserción)",
+    "9": "Ignorado"
+  },
+  "metadatos_metricas": {
+    "tasa_aprobacion": "Porcentaje de estudiantes promovidos sobre el total matriculado: (aprobados / total) * 100",
+    "tasa_desercion": "Porcentaje de estudiantes retirados antes de finalizar el ciclo escolar: (retirados / total) * 100",
+    "tasa_repitencia": "Porcentaje de estudiantes no promovidos que deberán repetir: (no_promovidos / total) * 100"
+  }
+}

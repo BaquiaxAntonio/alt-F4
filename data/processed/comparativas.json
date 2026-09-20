@@ -1,0 +1,56 @@
+{
+  "urbano_rural": {
+    "urbana": {
+      "total": 2080350,
+      "aprobados": 1861913,
+      "retirados": 79053,
+      "tasa_aprobacion": 89.5,
+      "tasa_desercion": 3.8
+    },
+    "rural": {
+      "total": 2542650,
+      "aprobados": 2116923,
+      "retirados": 147951,
+      "tasa_aprobacion": 83.26,
+      "tasa_desercion": 5.82
+    }
+  },
+  "sector": [
+    {
+      "sector": "Oficial (Público)",
+      "total": 3605940,
+      "tasa_aprobacion": 85.5,
+      "tasa_desercion": 5.6
+    },
+    {
+      "sector": "Privado",
+      "total": 832140,
+      "tasa_aprobacion": 92.5,
+      "tasa_desercion": 2.1
+    },
+    {
+      "sector": "Por Cooperativa",
+      "total": 138690,
+      "tasa_aprobacion": 88.0,
+      "tasa_desercion": 4.1
+    },
+    {
+      "sector": "Municipal",
+      "total": 46230,
+      "tasa_aprobacion": 87.0,
+      "tasa_desercion": 4.5
+    }
+  ],
+  "sexo": {
+    "hombre": {
+      "total": 2348484,
+      "tasa_aprobacion": 86.4,
+      "tasa_desercion": 5.2
+    },
+    "mujer": {
+      "total": 2274516,
+      "tasa_aprobacion": 85.72,
+      "tasa_desercion": 4.61
+    }
+  }
+}
