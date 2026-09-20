@@ -1,0 +1,89 @@
+{
+  "_descripcion": "Diccionario de variables del dataset INE Guatemala - Educación Formal 2024",
+  "_fuente": "https://datos.ine.gob.gt/dataset/educacion-formal-2024",
+  "_nota": "Ajusta los mapeos según el diccionario oficial incluido en el dataset del INE",
+
+  "SECTOR": {
+    "1": "Público",
+    "2": "Privado",
+    "3": "Cooperativa",
+    "4": "Municipal",
+    "9": "Ignorado"
+  },
+
+  "AREA": {
+    "1": "Urbana",
+    "2": "Rural",
+    "9": "Ignorado"
+  },
+
+  "RESULTADO": {
+    "1": "Promovido",
+    "5": "No promovido",
+    "6": "Retirado",
+    "9": "Ignorado"
+  },
+
+  "SEXO": {
+    "1": "Hombre",
+    "2": "Mujer",
+    "9": "Ignorado"
+  },
+
+  "NIVEL": {
+    "1": "Preprimaria",
+    "2": "Primaria",
+    "3": "Básico",
+    "4": "Diversificado",
+    "9": "Ignorado"
+  },
+
+  "GRADO": {
+    "1": "1ro",
+    "2": "2do",
+    "3": "3ro",
+    "4": "4to",
+    "5": "5to",
+    "6": "6to",
+    "9": "Ignorado"
+  },
+
+  "DEPARTAMENTO": {
+    "1":  "Guatemala",
+    "2":  "El Progreso",
+    "3":  "Sacatepéquez",
+    "4":  "Chimaltenango",
+    "5":  "Escuintla",
+    "6":  "Santa Rosa",
+    "7":  "Sololá",
+    "8":  "Totonicapán",
+    "9":  "Quetzaltenango",
+    "10": "Suchitepéquez",
+    "11": "Retalhuleu",
+    "12": "San Marcos",
+    "13": "Huehuetenango",
+    "14": "Quiché",
+    "15": "Baja Verapaz",
+    "16": "Alta Verapaz",
+    "17": "Petén",
+    "18": "Izabal",
+    "19": "Zacapa",
+    "20": "Chiquimula",
+    "21": "Jalapa",
+    "22": "Jutiapa"
+  },
+
+  "PUEBLO": {
+    "1": "Maya",
+    "2": "Garífuna",
+    "3": "Xinka",
+    "4": "Afrodescendiente",
+    "5": "Ladino",
+    "6": "Extranjero",
+    "9": "Ignorado"
+  },
+
+  "MUNICIPIO": {
+    "_nota": "Ver diccionario oficial del INE para códigos de municipios (más de 300 municipios)"
+  }
+}

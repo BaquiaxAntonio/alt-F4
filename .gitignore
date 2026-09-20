@@ -22,3 +22,33 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# ─── Secretos y configuración local ──────────────────────
+.env
+.env.local
+.env.*.local
+
+# ─── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+.Python
+venv/
+.venv/
+env/
+ENV/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# ─── Datos grandes (no versionar archivos XLSX del INE) ──
+data/raw/
+data/processed/
+!data/.gitkeep
+!data/processed/.gitkeep
+!data/raw/.gitkeep
+
+# ─── Docker volumes ───────────────────────────────────────
+postgres_data/
